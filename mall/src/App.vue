@@ -1,21 +1,25 @@
 <script setup>
-	import {
-		ref
-	} from 'vue'
-	import {
-		Menu as IconMenu,
-		Message,
-		Setting
-	} from '@element-plus/icons-vue'
+import {
+	ref
+} from 'vue'
+import {
+	Menu as IconMenu,
+	Message,
+	Setting
+} from '@element-plus/icons-vue'
 
-	const item = {
-		date: '2016-05-02',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	}
-	const tableData = ref(Array.from({
-		length: 20
-	}).fill(item))
+const item = {
+	date: '2016-05-02',
+	name: 'Tom',
+	address: 'No. 189, Grove St, Los Angeles',
+}
+const tableData = ref(Array.from({
+	length: 20
+}).fill(item))
+
+// 路由
+import { RouterLink, RouterView } from 'vue-router'
+
 </script>
 
 <template>
@@ -30,17 +34,21 @@
 									<message />
 								</el-icon>商品信息
 							</template>
-							<el-menu-item-group>
 
-								<el-menu-item index="1-1">Option 1</el-menu-item>
-								<el-menu-item index="1-2">Option 2</el-menu-item>
+							<el-menu-item-group>
+								<RouterLink to="/Commodity-list">
+									<el-menu-item index="1-1">
+										商品列表
+									</el-menu-item>
+								</RouterLink>
+								<RouterLink to="/Add-goods">
+									<el-menu-item index="1-2">
+										添加商品
+									</el-menu-item>
+								</RouterLink>
 							</el-menu-item-group>
-							<el-menu-item index="1-3">Option 3</el-menu-item>
-							<el-sub-menu index="1-4">
-								<template #title>Option4</template>
-								<el-menu-item index="1-4-1">Option 4-1</el-menu-item>
-							</el-sub-menu>
 						</el-sub-menu>
+
 						<el-sub-menu index="2">
 							<template #title>
 								<el-icon>
@@ -78,7 +86,7 @@
 								<template #title>Option 4</template>
 								<el-menu-item index="3-4-1">Option 4-1</el-menu-item>
 							</el-sub-menu>
-							
+
 						</el-sub-menu>
 					</el-menu>
 				</el-scrollbar>
@@ -102,8 +110,10 @@
 						<span>Tom</span>
 					</div>
 				</el-header>
+				<!--我把el-main替换为 RouterView 路由出口-->
+				<RouterView />
 
-				<el-main>
+				<!-- <el-main>
 					<el-scrollbar>
 						<el-table :data="tableData">
 							<el-table-column prop="date" label="Date" width="140" />
@@ -111,45 +121,44 @@
 							<el-table-column prop="address" label="Address" />
 						</el-table>
 					</el-scrollbar>
-				</el-main>
+				</el-main> -->
 			</el-container>
 		</el-container>
 	</div>
 </template>
 
 <style scoped>
-	 
-	.layout-container-demo .el-header {
-		position: relative;
-		background-color: var(--el-color-primary-light-7);
-		color: var(--el-text-color-primary);
-	}
+.layout-container-demo .el-header {
+	position: relative;
+	background-color: var(--el-color-primary-light-7);
+	color: var(--el-text-color-primary);
+}
 
-	.layout-container-demo .el-aside {
-		color: var(--el-text-color-primary);
-		background: var(--el-color-primary-light-8);
-	}
+.layout-container-demo .el-aside {
+	color: var(--el-text-color-primary);
+	background: var(--el-color-primary-light-8);
+}
 
-	.layout-container-demo .el-menu {
-		border-right: none;
-	}
+.layout-container-demo .el-menu {
+	border-right: none;
+}
 
-	.layout-container-demo .el-main {
-		padding: 0;
-	}
+.layout-container-demo .el-main {
+	padding: 0;
+}
 
-	.layout-container-demo .toolbar {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-		right: 20px;
-	}
+.layout-container-demo .toolbar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	right: 20px;
+}
 
-	@media screen and (min-width:10px) {
-		#app {
-			width: 100% !important;
-			display: block !important;
-		}
+@media screen and (min-width:10px) {
+	#app {
+		width: 100% !important;
+		display: block !important;
 	}
+}
 </style>
