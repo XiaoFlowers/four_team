@@ -19,8 +19,7 @@
 </script>
 
 <template>
-	<div class="box">
-		<el-container class="layout-container-demo" style="height: 500px">
+		<!-- <el-container class="layout-container-demo" style="height: 500px">
 			<el-aside width="200px">
 				<el-scrollbar>
 					<el-menu :default-openeds="['1', '4']">
@@ -113,12 +112,16 @@
 					</el-scrollbar>
 				</el-main>
 			</el-container>
-		</el-container>
-	</div>
+		</el-container> -->
+		<RouterView></RouterView>
+
 </template>
 
 <style scoped>
-	 
+	 #app{
+		 width: 100%;
+		 height: 100vh;
+	 }
 	.layout-container-demo .el-header {
 		position: relative;
 		background-color: var(--el-color-primary-light-7);
