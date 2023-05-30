@@ -1,12 +1,15 @@
 <script setup>
-	import {
-		ref
-	} from 'vue'
+	import {ref} from 'vue'
 	import {
 		Menu as IconMenu,
 		Message,
 		Setting
 	} from '@element-plus/icons-vue'
+	import { RouterLink,RouterView } from 'vue-router'; 
+
+	// function order(){
+
+	// }
 
 	const item = {
 		date: '2016-05-02',
@@ -41,24 +44,34 @@
 								<el-menu-item index="1-4-1">Option 4-1</el-menu-item>
 							</el-sub-menu>
 						</el-sub-menu>
-						<el-sub-menu index="2">
+						<el-sub-menu index="2" @click="order">
 							<template #title>
 								<el-icon>
 									<icon-menu />
 								</el-icon>订单信息
 							</template>
 							<el-menu-item-group>
-								<template #title>Group 1</template>
-								<el-menu-item index="2-1">Option 1</el-menu-item>
-								<el-menu-item index="2-2">Option 2</el-menu-item>
+								<RouterLink to="/order">
+									<el-menu-item>订单信息</el-menu-item>
+								</RouterLink>
 							</el-menu-item-group>
-							<el-menu-item-group title="Group 2">
-								<el-menu-item index="2-3">Option 3</el-menu-item>
-							</el-menu-item-group>
-							<el-sub-menu index="2-4">
-								<template #title>Option 4</template>
-								<el-menu-item index="2-4-1">Option 4-1</el-menu-item>
-							</el-sub-menu>
+							
+
+							<!-- <el-menu-item-group title="Group 1"> -->
+								<!-- <template #title>Group 1</template> -->
+								<!-- <el-menu-item index="2-1"> -->
+									<!-- <i class="el-icon-s-order"></i> -->
+									<!-- 订单信息 -->
+								<!-- </el-menu-item> -->
+								<!-- <el-menu-item index="2-2">Option 2</el-menu-item> -->
+							<!-- </el-menu-item-group> -->
+							<!-- <el-menu-item-group title="Group 2"> -->
+								<!-- <el-menu-item index="2-3">Option 3</el-menu-item> -->
+							<!-- </el-menu-item-group> -->
+							<!-- <el-sub-menu index="2-4"> -->
+								<!-- <template #title>Option 4</template> -->
+								<!-- <el-menu-item index="2-4-1">Option 4-1</el-menu-item> -->
+							<!-- </el-sub-menu> -->
 						</el-sub-menu>
 						<el-sub-menu index="3">
 							<template #title>
@@ -104,13 +117,14 @@
 				</el-header>
 
 				<el-main>
-					<el-scrollbar>
+					<!-- <el-scrollbar>
 						<el-table :data="tableData">
 							<el-table-column prop="date" label="Date" width="140" />
 							<el-table-column prop="name" label="Name" width="120" />
 							<el-table-column prop="address" label="Address" />
 						</el-table>
-					</el-scrollbar>
+					</el-scrollbar> -->
+					<RouterView/>
 				</el-main>
 			</el-container>
 		</el-container>
